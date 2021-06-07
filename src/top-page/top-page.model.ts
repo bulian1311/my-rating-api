@@ -30,16 +30,15 @@ export class TopPageAdventage {
   description: string;
 }
 
-export interface TopPageModel extends Base {};
+export interface TopPageModel extends Base {}
 export class TopPageModel extends TimeStamps {
-
-  @prop({enum: TopLevelCategory})
+  @prop({ enum: TopLevelCategory })
   firstCategory: TopLevelCategory;
 
   @prop()
   secondCategory: string;
 
-  @prop({unique: true})
+  @prop({ unique: true })
   alias: string;
 
   @prop()
@@ -48,10 +47,10 @@ export class TopPageModel extends TimeStamps {
   @prop()
   category: string;
 
-  @prop({type: () => HhData})
+  @prop({ type: () => HhData })
   hh?: HhData;
 
-  @prop({type: () => [TopPageAdventage]})
+  @prop({ type: () => [TopPageAdventage] })
   advanteges: TopPageAdventage[];
 
   @prop()
@@ -60,6 +59,6 @@ export class TopPageModel extends TimeStamps {
   @prop()
   tagsTitle: string;
 
-  @prop({type: () => [String]})
+  @prop({ type: () => [String] })
   tags: string[];
 }
