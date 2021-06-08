@@ -24,12 +24,12 @@ export class ReviewController {
   }
 
   @HttpCode(201)
-  @Post()
+  @Post('create')
   async create(@Body() dto: CreateReviewDto) {
     return this.reviewService.create(dto);
   }
 
-  @HttpCode(201)
+  @HttpCode(200)
   @Delete(':id')
   async delete(@Param('id') id: string) {
     const deletedDoc = await this.reviewService.delete(id);
