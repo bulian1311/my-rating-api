@@ -8,6 +8,8 @@ import {
   HttpCode,
   HttpException,
   HttpStatus,
+  UsePipes,
+  ValidationPipe,
 } from '@nestjs/common';
 import { CreateReviewDto } from './dto/create-review.dto';
 import { REVIEW_NOT_FOUND } from './review.constants';
@@ -23,6 +25,7 @@ export class ReviewController {
     return this.reviewService.findByProductId(productId);
   }
 
+  @UsePipes(new ValidationPipe())
   @HttpCode(201)
   @Post('create')
   async create(@Body() dto: CreateReviewDto) {
