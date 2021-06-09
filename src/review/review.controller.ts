@@ -12,9 +12,9 @@ import {
   ValidationPipe,
   UseGuards,
 } from '@nestjs/common';
-import { IdValidationPipe } from 'src/pipes/id-validation.pipe';
+import { IdValidationPipe } from '../pipes/id-validation.pipe';
 import { JwtAuthGuard } from '../auth/guards/jwt.guard';
-import { UserEmail } from '../decorators/user-email.decorator';
+//import { UserEmail } from '../decorators/user-email.decorator';
 import { CreateReviewDto } from './dto/create-review.dto';
 import { REVIEW_NOT_FOUND } from './review.constants';
 import { ReviewService } from './review.service';
