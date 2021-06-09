@@ -18,9 +18,9 @@ const testDto: CreateReviewDto = {
 };
 
 const loginDto: AuthDto = {
-  login: "test@test.ru",
-  password: "12345"
-}
+  login: 'test@test.ru',
+  password: '12345',
+};
 
 describe('AppController (e2e)', () => {
   let app: INestApplication;

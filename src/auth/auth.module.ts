@@ -26,7 +26,7 @@ import { JwtStrategy } from './strategies/jwt-strategy';
       useFactory: getJwtConfig,
     }),
     PassportModule,
-    ConfigModule
+    ConfigModule,
   ],
   providers: [AuthService, JwtStrategy],
 })

@@ -5,11 +5,10 @@ import { AppModule } from '../src/app.module';
 import { disconnect } from 'mongoose';
 import { AuthDto } from '../src/auth/dto/auth.dto';
 
-
 const loginDto: AuthDto = {
-  login: "test@test.ru",
-  password: "12345"
-}
+  login: 'test@test.ru',
+  password: '12345',
+};
 
 describe('AuthController (e2e)', () => {
   let app: INestApplication;
@@ -21,7 +20,6 @@ describe('AuthController (e2e)', () => {
 
     app = moduleFixture.createNestApplication();
     await app.init();
-
   });
 
   // it('/auth/register (POST) - success', async (done) => {
@@ -35,7 +33,7 @@ describe('AuthController (e2e)', () => {
   //     });
   // });
 
-	it('/auth/login (POST) - success', (done) => {
+  it('/auth/login (POST) - success', (done) => {
     return request(app.getHttpServer())
       .post('/auth/login')
       .send(loginDto)
@@ -46,26 +44,26 @@ describe('AuthController (e2e)', () => {
       });
   });
 
-	it('/auth/login (POST) - failure password', () => {
+  it('/auth/login (POST) - failure password', () => {
     return request(app.getHttpServer())
       .post('/auth/login')
-      .send({...loginDto, password: 'dfsdfsdfsfsfsfhgh'})
+      .send({ ...loginDto, password: 'dfsdfsdfsfsfsfhgh' })
       .expect(401, {
-				statusCode: 401,
-				message: "Не верный логин или пароль.",
-				error: "Unauthorized"
-			})
+        statusCode: 401,
+        message: 'Не верный логин или пароль.',
+        error: 'Unauthorized',
+      });
   });
 
-	it('/auth/login (POST) - failure login', () => {
+  it('/auth/login (POST) - failure login', () => {
     return request(app.getHttpServer())
       .post('/auth/login')
-      .send({...loginDto, login: 'qqq@qqq.qq'})
+      .send({ ...loginDto, login: 'qqq@qqq.qq' })
       .expect(401, {
-				"statusCode": 401,
-				"message": "Пользователь не существует.",
-				"error": "Unauthorized"
-			})
+        statusCode: 401,
+        message: 'Пользователь не существует.',
+        error: 'Unauthorized',
+      });
   });
 
   afterAll(() => {
