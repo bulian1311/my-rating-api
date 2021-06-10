@@ -10,7 +10,9 @@ import {
   NotFoundException,
   UsePipes,
   ValidationPipe,
+  UseGuards,
 } from '@nestjs/common';
+import { JwtAuthGuard } from 'src/auth/guards/jwt.guard';
 import { IdValidationPipe } from '../pipes/id-validation.pipe';
 import { CreateProductDto } from './dto/create-product.dto';
 import { FindProductDto } from './dto/find-product.dto';
@@ -34,12 +36,14 @@ export class ProductController {
     return product;
   }
 
+  @UseGuards(JwtAuthGuard)
   @HttpCode(201)
   @Post('create')
   async create(@Body() dto: CreateProductDto) {
     return this.productService.create(dto);
   }
 
+  @UseGuards(JwtAuthGuard)
   @HttpCode(201)
   @Patch(':id')
   async update(
@@ -55,6 +59,7 @@ export class ProductController {
     return updatedProduct;
   }
 
+  @UseGuards(JwtAuthGuard)
   @HttpCode(200)
   @Delete(':id')
   async delete(@Param('id', IdValidationPipe) id: string) {

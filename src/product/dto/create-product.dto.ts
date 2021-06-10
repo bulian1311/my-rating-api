@@ -32,8 +32,8 @@ export class CreateProductDto {
   @IsNumber()
   credit: number;
 
-  @IsNumber()
-  description: number;
+  @IsString()
+  description: string;
 
   @IsString()
   advantages: string;
